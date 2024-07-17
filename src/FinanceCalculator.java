@@ -1,18 +1,30 @@
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
 
-public class FinanceCalculator {
-    public static void main(String [] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите сумму: ");
-        float sum = scanner.nextFloat();
+public class FinanceCalculator extends JFrame {
+    private final static GUI gui = new GUI();
 
-        float pocketMoney = sum * 0.15f;
-        float averageTarget = sum * 0.55f;
-        float investments = sum * 0.30f;
+    public FinanceCalculator() {
+        setVisible(true);
+        setResizable(false);
+        setSize(590, 320);
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension dimension = toolkit.getScreenSize();
+        setLocation(dimension.width / 2 - 295, dimension.height / 2 - 160);
 
-        System.out.printf("На карманные расходы: %.2f рублей\n" +
-                        "На то что копишь: %.2f рублей\n" +
-                        "На инвестиции: %.2f рублей",
-                            pocketMoney, averageTarget, investments);
+        setTitle("Finance calculator");
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        add(gui);
+    }
+
+    // Основной метод main
+    public static void main(String[] args) {
+        FinanceCalculator fc = new FinanceCalculator();
+
+        gui.repaint();
     }
 }
+
+
